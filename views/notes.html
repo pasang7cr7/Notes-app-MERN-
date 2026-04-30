@@ -1,0 +1,31 @@
+<form id="noteForm">
+  <input type="text" id="title" placeholder="Title" />
+  <input type="text" id="content" placeholder="Note" />
+  <button id="submitBtn" type="submit">Submit</button>
+  <button id="lookBtn" type="button">Look</button>
+</form>
+
+<div id="notesList"></div>
+
+<script>
+  document.getElementById("submitBtn").addEventListener("click", async (e) => {
+    e.preventDefault(); // stops the old form behavior (page reload)
+
+    const title = document.getElementById("title").value;
+    const content = document.getElementById("content").value;
+
+    const response = await fetch("/notes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }), // sends as JSON
+    });
+
+    // const data = await response.json(); // reads the JSON back
+    // if (response.ok) {
+    //   console.log("Note created:", data);
+    //   window.location.href = "/afterNote"; // redirect after success
+    // } else {
+    //   console.error("Error:", data.error);
+    // }
+  });
+</script>
