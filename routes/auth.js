@@ -15,8 +15,8 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async (req, res) => {
   try {
-    const email = req.body.email.toLowerCase().trim();
-    const password = req.body.password.toLowerCase().trim();
+    const email = req.body.email.trim();
+    const password = req.body.password.trim();
 
     if (email === "" || password === "") {
       return res.status(400).json({ error: "your input is incorrect" });
@@ -35,9 +35,7 @@ router.post("/register", async (req, res) => {
       process.env.JWT_SECRET, // secret — environment variable ma rakhnu parchha
       { expiresIn: "1h" }, // options
     );
-    return res.status(201).json({
-      message: "successfully created token and saved emial and hashed password",
-    });
+    return res.status(201).json({ token });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
@@ -49,8 +47,8 @@ router.get("/login", (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const email = req.body.email.toLowerCase().trim();
-    const password = req.body.password.toLowerCase().trim();
+    const email = req.body.email.trim();
+    const password = req.body.password.trim();
 
     if (email === "" || password === "") {
       return res.status(400).json({ error: "your input is incorrect" });
