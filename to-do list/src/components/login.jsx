@@ -5,7 +5,7 @@ function Login({ setIsLoggedIn }) {
   const [password, setpassword] = useState("");
 
   const handleLogin = async () => {
-    const url = "http://localhost:3000/login";
+    const url = "https://notes-app-mern-x3rp.onrender.com/login";
     try {
       const req = await fetch(url, {
         method: "POST",

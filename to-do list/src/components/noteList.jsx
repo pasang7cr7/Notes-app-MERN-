@@ -4,7 +4,7 @@ function NoteList({ notes = [], setNotes }) {
   useEffect(() => {
     try {
       const fetchNotes = async () => {
-        const url = "http://localhost:3000/notes";
+        const url = "https://notes-app-mern-x3rp.onrender.com/notes";
         const token = localStorage.getItem("token");
         const res = await fetch(url, {
           method: "GET",
@@ -24,7 +24,7 @@ function NoteList({ notes = [], setNotes }) {
   const del = async (noteId) => {
     const token = localStorage.getItem("token");
 
-    const url = `http://localhost:3000/notes/${noteId}`;
+    const url = `https://notes-app-mern-x3rp.onrender.com/notes/${noteId}`;
     try {
       const res = await fetch(url, {
         method: "DELETE",
@@ -50,7 +50,7 @@ function NoteList({ notes = [], setNotes }) {
 
   const handleSave = async (id) => {
     const token = localStorage.getItem("token");
-    const url = `http://localhost:3000/notes/${id}`;
+    const url = `https://notes-app-mern-x3rp.onrender.com/notes/${id}`;
 
     try {
       const res = await fetch(url, {

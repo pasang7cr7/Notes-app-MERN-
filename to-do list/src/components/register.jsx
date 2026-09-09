@@ -5,7 +5,7 @@ function Register() {
   const [password, setpassword] = useState("");
 
   const handleReg = async () => {
-    const url = "http://localhost:3000/register";
+    const url = "https://notes-app-mern-x3rp.onrender.com/register";
 
     try {
       const req = await fetch(url, {

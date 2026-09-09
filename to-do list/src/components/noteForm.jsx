@@ -7,14 +7,17 @@ function NoteForm({ notes, setNotes }) {
   const noteHandler = async () => {
     try {
       const token = localStorage.getItem("token");
-      const req = await fetch("http://localhost:3000/notes", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const req = await fetch(
+        "https://notes-app-mern-x3rp.onrender.com/notes",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ title, content }),
         },
-        body: JSON.stringify({ title, content }),
-      });
+      );
       const data = await req.json();
       setNotes([...notes, data.note]);
     } catch (err) {
